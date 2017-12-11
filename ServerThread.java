@@ -15,7 +15,11 @@ public class ServerThread implements Runnable {
 	Socket s;
 	int id;
 
+<<<<<<< HEAD
+	public ServerThread(Socket s, int id) throws IOException {
+=======
 	public ServerThread(Socket s) throws IOException {
+>>>>>>> 862cbe00fc49835242ffa5d0bee9ab38a5be9c05
 		// TODO Auto-generated constructor stub
 		br = new BufferedReader(new InputStreamReader(s.getInputStream()));
 		this.id = id;
@@ -44,7 +48,12 @@ public class ServerThread implements Runnable {
 				}
 
 			}
+<<<<<<< HEAD
+
+		} catch (IOException e) {
+=======
 		} catch (Exception e) {
+>>>>>>> 862cbe00fc49835242ffa5d0bee9ab38a5be9c05
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -52,6 +61,41 @@ public class ServerThread implements Runnable {
 	}
 
 	// method to read message from clients
+<<<<<<< HEAD
+	private String readFromClient() {
+		// TODO Auto-generated method stub
+		try {
+
+			String readCon = br.readLine();
+
+			System.out.println("hello world");
+			/*
+			 * if (readCon.equalsIgnoreCase("HELLO")) {
+			 * System.out.println("I am in hello"); }
+			 */
+
+			switch (readCon) {
+			case "KILL_SERVICE":
+				this.s.close();
+				Server.sockets.remove(s);
+				break;
+			case "HELLO":
+				 return ("HELO text" + "StudentID:[your student ID]" + 17303731 + "\n");
+				
+
+			case "LEAVE_CHATROOM":
+				return ("LEFT_CHATROOM:" + Thread.currentThread().getName() + "JOIN_ID:"
+						+ s.getInetAddress().getHostAddress());
+				
+		
+			}
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			Server.sockets.remove(s);
+			e.printStackTrace();
+		}
+=======
 	private String readFromClient() throws Exception {
 		// TODO Auto-generated method stub
 
@@ -82,6 +126,7 @@ public class ServerThread implements Runnable {
 
 		}
 
+>>>>>>> 862cbe00fc49835242ffa5d0bee9ab38a5be9c05
 		return null;
 
 	}
