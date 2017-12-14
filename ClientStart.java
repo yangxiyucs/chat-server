@@ -12,10 +12,11 @@ public class ClientStart {
 	// TODO Auto-generated constructor stub
 	public static void main(String[] args) throws Exception {
 		Socket s;
-		int id = (int) (Math.random());
+		int id = (int) (Server.JOIN_ID++);
 		s = new Socket("localhost", 9999);
 		//start a new thread 
-		new Thread(new ClientThread(s, id)).start();
+		String name = "";
+		new Thread(new ClientThread(s,id,name)).start();
 		PrintStream ps = new PrintStream(s.getOutputStream());
 		String line = null;
 		//read the input from keyboard
